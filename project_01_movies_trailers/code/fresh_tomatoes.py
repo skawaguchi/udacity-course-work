@@ -53,6 +53,26 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+
+        div.movie-details h3 {
+            font-size: 1em;
+            float: left;
+            line-height: 20px;
+            margin-right: 10px;
+            margin-top: 0;
+        }
+
+        ul.actors-list {
+            list-style: none;
+        }
+
+        ul.actors-list li {
+            float: left;
+        }
+
+        ul.actors-list li:first-child {
+            margin-left: 0;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -99,7 +119,7 @@ main_page_content = '''
         </div>
       </div>
     </div>
-    
+
     <!-- Main Page Content -->
     <div class="container">
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -122,8 +142,28 @@ movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
+    <div class="movie-details">
+        <h3>Actors</h3>
+        <ul class="actors-list">
+            {actor_tiles}
+        </ul>
+    </div>
 </div>
 '''
+
+# A single actor template
+actor_tile_content = '''
+<li class="actor-tile text-center"
+>
+    <span>{name}</span>
+</li>
+'''
+
+def create_actor_tiles_content(actors):
+    content = ''
+    for actor in actors:
+        content += actor_tile_content.format(name=actor.name)
+    return content
 
 def create_movie_tiles_content(movies):
     # The HTML content for this section of the page
@@ -134,13 +174,21 @@ def create_movie_tiles_content(movies):
         youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
 
+        actor_tiles = create_actor_tiles_content(
+            actors=movie.actors
+        )
+
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            actor_tiles=actor_tiles
         )
+
     return content
+
+
 
 def open_movies_page(movies):
   # Create or overwrite the output file
