@@ -9,7 +9,7 @@ main_page_head = '''
     <title>Fresh Tomatoes!</title>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-    <style type="text/css" media="screen" href="style/main.css"></style>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 '''
 
