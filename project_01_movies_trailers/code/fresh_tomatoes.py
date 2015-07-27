@@ -48,6 +48,7 @@ main_page_content = '''
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="src/polyfills.js"></script>
     <script src="src/app.js"></script>
   </body>
 </html>
