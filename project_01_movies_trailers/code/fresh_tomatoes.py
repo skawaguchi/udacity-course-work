@@ -1,6 +1,7 @@
 import webbrowser
 import os
 import re
+import json
 
 # Styles and scripting for the page
 main_page_head = '''
@@ -25,8 +26,7 @@ main_page_content = '''
           <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
             <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
           </a>
-          <div class="scale-media" id="trailer-video-container">
-          </div>
+          <div class="scale-media" id="trailer-video-container"></div>
         </div>
       </div>
     </div>
@@ -42,10 +42,18 @@ main_page_content = '''
       </div>
     </div>
     <div id="screenshot"></div>
-    <div class="container">
+    <ul class="movie-list">
       {movie_tiles}
-    </div>
+    </ul>
 
+    <!-- Movie Details -->
+    <div id="movie-detail-container"></div>
+
+    <script>
+      // Add the movies to JavaScript to allow us to create a more dynamic
+      // user experience.
+      var movies = {movie_list}
+    </script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="src/polyfills.js"></script>
@@ -56,25 +64,12 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
-    <ul class="movie-screenshots">
-        {screenshot_tiles}
-    </ul>
-    <div class="movie-details">
-        <h3>Actors:</h3>
-        <ul class="actors-list">
-            {actor_tiles}
-        </ul>
-        <h3>Year of Release:</h3>
-        <span>{year}</span>
-    </div>
-</div>
-'''
-
-screenshot_tile_content = '''
-<li><img src={screenshot_image_url}></li>
+<li class="movie-tile col-md-4">
+    <a class="text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer" data-movie-id={movie_id}>
+        <img src="{poster_image_url}" width="220" height="342">
+        <h2 class="movie-title">{movie_title}</h2>
+    </a>
+</li>
 '''
 
 # A single actor template
@@ -101,35 +96,27 @@ def create_movie_tiles_content(movies):
             actors=movie.actors
         )
 
-        screenshot_tiles = create_movie_screenshot_tiles(
-            screenshots=movie.screenshots
-        )
-
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
+            movie_id=movie.id,
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id,
             actor_tiles=actor_tiles,
-            screenshot_tiles=screenshot_tiles,
             year = movie.year
         )
 
     return content
-
-def create_movie_screenshot_tiles(screenshots):
-    content = ''
-    for screenshot in screenshots:
-        print screenshot
-        content += screenshot_tile_content.format(screenshot_image_url=screenshot)
-        return content
 
 def open_movies_page(movies):
   # Create or overwrite the output file
   output_file = open('fresh_tomatoes.html', 'w')
 
   # Replace the placeholder for the movie tiles with the actual dynamically generated content
-  rendered_content = main_page_content.format(movie_tiles=create_movie_tiles_content(movies))
+  rendered_content = main_page_content.format(
+    movie_tiles=create_movie_tiles_content(movies),
+    movie_list=json.dumps(movies, default=lambda o: o.__dict__)
+  )
 
   # Output the file
   output_file.write(main_page_head + rendered_content)

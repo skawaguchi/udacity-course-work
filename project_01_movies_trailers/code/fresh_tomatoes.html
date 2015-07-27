@@ -2,98 +2,9 @@
 <head>
     <meta charset="utf-8">
     <title>Fresh Tomatoes!</title>
-
-    <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <style type="text/css" media="screen">
-        body {
-            padding-top: 80px;
-        }
-        #trailer .modal-dialog {
-            margin-top: 200px;
-            width: 640px;
-            height: 480px;
-        }
-        .hanging-close {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            z-index: 9001;
-        }
-        #trailer-video {
-            width: 100%;
-            height: 100%;
-        }
-        .movie-tile {
-            margin-bottom: 20px;
-            padding-top: 20px;
-        }
-        .movie-tile:hover {
-            background-color: #EEE;
-            cursor: pointer;
-        }
-        .scale-media {
-            padding-bottom: 56.25%;
-            position: relative;
-        }
-        .scale-media iframe {
-            border: none;
-            height: 100%;
-            position: absolute;
-            width: 100%;
-            left: 0;
-            top: 0;
-            background-color: white;
-        }
-
-        div.movie-details h3 {
-            font-size: 1em;
-            float: left;
-            line-height: 20px;
-            margin-right: 10px;
-            margin-top: 0;
-        }
-
-        ul.actors-list {
-            list-style: none;
-        }
-
-        ul.actors-list li {
-            float: left;
-        }
-
-        ul.actors-list li:first-child {
-            margin-left: 0;
-        }
-    </style>
-    <script type="text/javascript" charset="utf-8">
-        // Pause the video when the modal is closed
-        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
-            // Remove the src so the player itself gets removed, as this is the only
-            // reliable way to ensure the video stops playing in IE
-            $("#trailer-video-container").empty();
-        });
-        // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile', function (event) {
-            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
-            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
-            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
-              'id': 'trailer-video',
-              'type': 'text-html',
-              'src': sourceUrl,
-              'frameborder': 0
-            }));
-        });
-        // Animate in the movies when the page loads
-        $(document).ready(function () {
-          $('.movie-tile').hide().first().show("fast", function showNext() {
-            $(this).next("div").show("fast", showNext);
-          });
-        });
-    </script>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <!DOCTYPE html>
@@ -106,8 +17,7 @@
           <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
             <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
           </a>
-          <div class="scale-media" id="trailer-video-container">
-          </div>
+          <div class="scale-media" id="trailer-video-container"></div>
         </div>
       </div>
     </div>
@@ -122,108 +32,64 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div id="screenshot"></div>
+    <ul class="movie-list">
       
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="M5Y_nOkFvbY" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster.jpg" width="220" height="342">
-    <h2>World War Z</h2>
-    <div class="movie-details">
-        <h3>Actors</h3>
-        <ul class="actors-list">
-            
-<li class="actor-tile text-center"
->
-    <span>Brad Pitt</span>
+<li class="movie-tile col-md-4">
+    <a class="text-center" data-trailer-youtube-id="M5Y_nOkFvbY" data-toggle="modal" data-target="#trailer" data-movie-id=tt0816711>
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster.jpg" width="220" height="342">
+        <h2 class="movie-title">World War Z</h2>
+    </a>
 </li>
 
-        </ul>
-    </div>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="8m9EVP8X7N8" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/a/a3/Zombieland-poster.jpg" width="220" height="342">
-    <h2>Zombieland</h2>
-    <div class="movie-details">
-        <h3>Actors</h3>
-        <ul class="actors-list">
-            
-<li class="actor-tile text-center"
->
-    <span>Woody Harrelson</span>
+<li class="movie-tile col-md-4">
+    <a class="text-center" data-trailer-youtube-id="8m9EVP8X7N8" data-toggle="modal" data-target="#trailer" data-movie-id=tt127834>
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a3/Zombieland-poster.jpg" width="220" height="342">
+        <h2 class="movie-title">Zombieland</h2>
+    </a>
 </li>
 
-<li class="actor-tile text-center"
->
-    <span>Jesse Eisenberg</span>
+<li class="movie-tile col-md-4">
+    <a class="text-center" data-trailer-youtube-id="yfDUv3ZjH2k" data-toggle="modal" data-target="#trailer" data-movie-id=tt0365748>
+        <img src="http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-Poster.jpg" width="220" height="342">
+        <h2 class="movie-title">Shaun of the Dead</h2>
+    </a>
 </li>
 
-<li class="actor-tile text-center"
->
-    <span>Emma Stone</span>
+<li class="movie-tile col-md-4">
+    <a class="text-center" data-trailer-youtube-id="c7ynwAgQlDQ" data-toggle="modal" data-target="#trailer" data-movie-id=tt0289043>
+        <img src="http://www.movierulz.to/wp-content/uploads/2013/07/28-Days-Later.jpg" width="220" height="342">
+        <h2 class="movie-title">28 Days Later</h2>
+    </a>
 </li>
 
-        </ul>
-    </div>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="yfDUv3ZjH2k" data-toggle="modal" data-target="#trailer">
-    <img src="http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-Poster.jpg" width="220" height="342">
-    <h2>Shaun of the Dead</h2>
-    <div class="movie-details">
-        <h3>Actors</h3>
-        <ul class="actors-list">
-            
-<li class="actor-tile text-center"
->
-    <span>Simon Pegg</span>
+<li class="movie-tile col-md-4">
+    <a class="text-center" data-trailer-youtube-id="rhsutNfvuAY" data-toggle="modal" data-target="#trailer" data-movie-id=tt0363547>
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_movie.jpg" width="220" height="342">
+        <h2 class="movie-title">Dawn of the Dead</h2>
+    </a>
 </li>
 
-<li class="actor-tile text-center"
->
-    <span>Nick Frost</span>
+<li class="movie-tile col-md-4">
+    <a class="text-center" data-trailer-youtube-id="lEQwEmeWnyI" data-toggle="modal" data-target="#trailer" data-movie-id=tt127834>
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/11/Dodsno.jpg" width="220" height="342">
+        <h2 class="movie-title">Dead Snow</h2>
+    </a>
 </li>
 
-        </ul>
-    </div>
-</div>
+    </ul>
 
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="c7ynwAgQlDQ" data-toggle="modal" data-target="#trailer">
-    <img src="http://www.movierulz.to/wp-content/uploads/2013/07/28-Days-Later.jpg" width="220" height="342">
-    <h2>28 Days Later</h2>
-    <div class="movie-details">
-        <h3>Actors</h3>
-        <ul class="actors-list">
-            
-<li class="actor-tile text-center"
->
-    <span>Cillian Murphy</span>
-</li>
+    <!-- Movie Details -->
+    <div id="movie-detail-container"></div>
 
-        </ul>
-    </div>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="rhsutNfvuAY" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_movie.jpg" width="220" height="342">
-    <h2>Dawn of the Dead</h2>
-    <div class="movie-details">
-        <h3>Actors</h3>
-        <ul class="actors-list">
-            
-<li class="actor-tile text-center"
->
-    <span>Sarah Polley</span>
-</li>
-
-<li class="actor-tile text-center"
->
-    <span>Ving Rhames</span>
-</li>
-
-        </ul>
-    </div>
-</div>
-
-    </div>
+    <script>
+      // Add the movies to JavaScript to allow us to create a more dynamic
+      // user experience.
+      var movies = [{"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster.jpg", "title": "World War Z", "synopsis": "A epidemiologist struggles to find the cure for the zombie virus battling against time", "actors": [{"name": "Brad Pitt"}], "year": 2013, "screenshots": ["http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_xQoBm.jpg", "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_nxbku.jpg", "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_ftFQ8.jpg"], "id": "tt0816711", "trailer_youtube_url": "https://www.youtube.com/watch?v=M5Y_nOkFvbY"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/a/a3/Zombieland-poster.jpg", "title": "Zombieland", "synopsis": "A zombie comedy about a band of zombie apocalypse survivors looking for a safe haven in the United States.", "actors": [{"name": "Woody Harrelson"}, {"name": "Jesse Eisenberg"}, {"name": "Emma Stone"}], "year": 2009, "screenshots": ["http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_8DM5q.jpg", "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_y3DN7.jpg", "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_e2yFc.jpg"], "id": "tt127834", "trailer_youtube_url": "https://www.youtube.com/watch?v=8m9EVP8X7N8"}, {"poster_image_url": "http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-Poster.jpg", "title": "Shaun of the Dead", "synopsis": "Friends fight their way through zombies in hilarious fashion.", "actors": [{"name": "Simon Pegg"}, {"name": "Nick Frost"}], "year": 2004, "screenshots": ["http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_4WEgu.jpg", "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_dqt5z.jpg", "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_xWXLs.jpg"], "id": "tt0365748", "trailer_youtube_url": "https://www.youtube.com/watch?v=yfDUv3ZjH2k"}, {"poster_image_url": "http://www.movierulz.to/wp-content/uploads/2013/07/28-Days-Later.jpg", "title": "28 Days Later", "synopsis": "A coma patient awakens to discover that infected cannibals have taken over London, and maybe the world.", "actors": [{"name": "Cillian Murphy"}], "year": 2002, "screenshots": ["http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image29.jpg", "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image19.jpg", "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image21.jpg"], "id": "tt0289043", "trailer_youtube_url": "https://www.youtube.com/watch?v=c7ynwAgQlDQ"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_movie.jpg", "title": "Dawn of the Dead", "synopsis": "A group of survivors takes refuge in a mall.", "actors": [{"name": "Sarah Polley"}, {"name": "Ving Rhames"}], "year": 2004, "screenshots": ["http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_k7z1U.jpg", "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_Ab6WN.jpg", "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_SatYT.jpg"], "id": "tt0363547", "trailer_youtube_url": "https://www.youtube.com/watch?v=rhsutNfvuAY"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/1/11/Dodsno.jpg", "title": "Dead Snow", "synopsis": "A group of Norweigan friends combats Nazi zombies.", "actors": [{"name": "Vegar Hoel"}, {"name": "Charlotte Frogner"}], "year": 2009, "screenshots": ["http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_u8ucs.jpg", "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_ZznCV.jpg", "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_Fwqep.jpg"], "id": "tt127834", "trailer_youtube_url": "https://www.youtube.com/watch?v=lEQwEmeWnyI"}]
+    </script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="src/polyfills.js"></script>
+    <script src="src/app.js"></script>
   </body>
 </html>

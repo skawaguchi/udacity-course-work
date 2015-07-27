@@ -8,6 +8,7 @@ def populate_movies():
     """Populates a list of movies."""
 
     world_war_z = media.Movie(
+        "tt0816711",
         "World War Z",
         "A epidemiologist struggles to find the cure for the zombie virus "
         "battling against time",
@@ -28,6 +29,7 @@ def populate_movies():
     )
 
     zombieland = media.Movie(
+        "tt127834",
         "Zombieland",
         "A zombie comedy about a band of zombie apocalypse survivors looking for a "
         "safe haven in the United States.",
@@ -50,6 +52,7 @@ def populate_movies():
     )
 
     shaun_of_the_dead = media.Movie(
+        "tt0365748",
         "Shaun of the Dead",
         "Friends fight their way through zombies in hilarious fashion.",
         "http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-"
@@ -71,6 +74,7 @@ def populate_movies():
     )
 
     twenty_eight_days_later = media.Movie(
+        "tt0289043",
         "28 Days Later",
         "A coma patient awakens to discover that infected cannibals have taken over"
         " London, and maybe the world.",
@@ -91,6 +95,7 @@ def populate_movies():
     )
 
     dawn_of_the_dead_remake = media.Movie(
+        "tt0363547",
         "Dawn of the Dead",
         "A group of survivors takes refuge in a mall.",
         "https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_"
@@ -112,6 +117,7 @@ def populate_movies():
     )
 
     dead_snow = media.Movie(
+        "tt127834",
         "Dead Snow",
         "A group of Norweigan friends combats Nazi zombies.",
         "https://upload.wikimedia.org/wikipedia/en/1/11/Dodsno.jpg",
