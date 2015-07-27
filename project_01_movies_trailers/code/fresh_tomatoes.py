@@ -41,6 +41,7 @@ main_page_content = '''
         </div>
       </div>
     </div>
+    <div id="screenshot"></div>
     <div class="container">
       {movie_tiles}
     </div>
@@ -57,27 +58,33 @@ movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
+    <ul class="movie-screenshots">
+        {screenshot_tiles}
+    </ul>
     <div class="movie-details">
-        <h3>Actors</h3>
+        <h3>Actors:</h3>
         <ul class="actors-list">
             {actor_tiles}
         </ul>
+        <h3>Year of Release:</h3>
+        <span>{year}</span>
     </div>
 </div>
 '''
 
+screenshot_tile_content = '''
+<li><img src={screenshot_image_url}></li>
+'''
+
 # A single actor template
 actor_tile_content = '''
-<li class="actor-tile text-center"
->
-    <span>{name}</span>
-</li>
+<li class="actor-tile text-center">{name}</li>
 '''
 
 def create_actor_tiles_content(actors):
     content = ''
     for actor in actors:
-        content += actor_tile_content.format(name=actor.name)
+        content += actor_tile_content.format(name=actor.get_name())
     return content
 
 def create_movie_tiles_content(movies):
@@ -93,17 +100,28 @@ def create_movie_tiles_content(movies):
             actors=movie.actors
         )
 
+        screenshot_tiles = create_movie_screenshot_tiles(
+            screenshots=movie.screenshots
+        )
+
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id,
-            actor_tiles=actor_tiles
+            actor_tiles=actor_tiles,
+            screenshot_tiles=screenshot_tiles,
+            year = movie.year
         )
 
     return content
 
-
+def create_movie_screenshot_tiles(screenshots):
+    content = ''
+    for screenshot in screenshots:
+        print screenshot
+        content += screenshot_tile_content.format(screenshot_image_url=screenshot)
+        return content
 
 def open_movies_page(movies):
   # Create or overwrite the output file
