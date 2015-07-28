@@ -25,9 +25,9 @@ module.exports = function (config) {
       dir: 'test/coverage'
     },
 
-    // exclude: [
-    //   '**/*.e2e.js'
-    // ],
+    exclude: [
+      'src/polyfills.js'
+    ],
 
     frameworks: ['jasmine'],
 
@@ -39,7 +39,7 @@ module.exports = function (config) {
     port: 9876,
 
     preprocessors: {
-      'test/specs/**/!(*.spec).js': 'coverage'
+      'src/**/*.js': 'coverage'
     },
 
     proxies: {
