@@ -16,8 +16,11 @@ var freshTomatoes = (function () {
     });
 
     $(document).on('mouseover', '.movie-tile a', function (event) {
-        var movieId = $(this).attr('data-movie-id');
-        showMovieDetails(movieId);
+      var
+        targetElement = $(this),
+        movieId = targetElement.attr('data-movie-id');
+
+        showMovieDetails(targetElement, movieId);
     });
 
     // Start playing the video whenever the trailer modal is opened
@@ -33,7 +36,7 @@ var freshTomatoes = (function () {
 
     trailerVideoContainer
       .empty()
-      .append($("<iframe></iframe>", {
+      .append($('<iframe></iframe>', {
         'id': 'trailer-video',
         'type': 'text-html',
         'src': sourceUrl,
@@ -42,12 +45,23 @@ var freshTomatoes = (function () {
     );
   }
 
-  function showMovieDetails (movieId) {
-    var movie = getMovieInfo(movieId);
-    movieDetailContainer.html(
-      '<h2>' + movie.title + '</h2>' +
-      '<span>Year:</span> <span>' + movie.year + '</span>'
-    );
+  function showMovieDetails (targetElement, movieId) {
+    var
+      movie = getMovieInfo(movieId),
+      popoverOptions = {
+        content: '<span>Year:</span> <span>' + movie.year + '</span>',
+        html: true,
+        template: '<div class="popover" role="tooltip">' +
+            '<div class="arrow"></div>' +
+            '<h3 class="popover-title"></h3>' +
+            '<div class="popover-content"></div>' +
+          '</div>',
+        title: movie.title,
+        trigger: 'hover'
+      };
+
+    targetElement.popover(popoverOptions);
+
   }
 
   function getMovieInfo (movieId) {
