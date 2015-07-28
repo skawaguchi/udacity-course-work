@@ -4,6 +4,8 @@ module.exports = function (config) {
 
   config.set({
 
+    autoWatch: true,
+
     // Normalize the reference to project root
     basePath: '../',
 
@@ -31,7 +33,7 @@ module.exports = function (config) {
 
     //logLevel: config.LOG_ERROR,
     //logLevel: config.LOG_DEBUG,
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
     // web server port
     port: 9876,
@@ -47,13 +49,7 @@ module.exports = function (config) {
     reporters: ['coverage', 'spec'],
 
     singleRun: false,
-    // ,
 
-    reportSlowerThan: 100,
-    //
-    // // cli runner port
-    // runnerPort: config.RUNNER_PORT || 8090,
-
-    // urlRoot: '__karma'
+    reportSlowerThan: 100
   });
 };
