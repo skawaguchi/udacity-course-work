@@ -1,34 +1,30 @@
 
-var freshTomatoes = (function () {
+/* global $ movies */
+
+window.freshTomatoes = (function (movies) {
   'use strict';
 
   var
     trailerVideoContainer = $('#trailer-video-container'),
     movieDetailContainer = $('#movie-detail-container');
 
-  function init () {
+  function modalClicked () {
+    // Remove the src so the player itself gets removed, as this is the only
+    // reliable way to ensure the video stops playing in IE
+    trailerVideoContainer.empty();
+  }
 
-    // Pause the video when the modal is closed
-    $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
-        // Remove the src so the player itself gets removed, as this is the only
-        // reliable way to ensure the video stops playing in IE
-        trailerVideoContainer.empty();
-    });
+  function movieTileMouseOver () {
+    var
+      targetElement = $(this),
+      movieId = targetElement.attr('data-movie-id');
 
-    $(document).on('mouseover', '.movie-tile a', function (event) {
-      var
-        targetElement = $(this),
-        movieId = targetElement.attr('data-movie-id');
+    showMovieDetails(targetElement, movieId);
+  }
 
-        showMovieDetails(targetElement, movieId);
-    });
-
-    // Start playing the video whenever the trailer modal is opened
-    $(document).on('click', '.movie-tile a', function (event) {
-        var trailerYouTubeId = $(this).attr('data-trailer-youtube-id');
-        playTrailer(trailerYouTubeId);
-    });
-
+  function movieTileClicked () {
+    var trailerYouTubeId = $(this).attr('data-trailer-youtube-id');
+    playTrailer(trailerYouTubeId);
   }
 
   function playTrailer (trailerYouTubeId) {
@@ -72,10 +68,21 @@ var freshTomatoes = (function () {
     });
   }
 
+
+  function init () {
+
+    // Pause the video when the modal is closed
+    $(document).on('click', '.hanging-close, .modal-backdrop, .modal', modalClicked);
+
+    $(document).on('mouseover', '.movie-tile a', movieTileMouseOver);
+
+    // Start playing the video whenever the trailer modal is opened
+    $(document).on('click', '.movie-tile a', movieTileClicked);
+
+  }
+
   return {
     init: init
   };
 
-}());
-
-freshTomatoes.init();
+}(movies));
