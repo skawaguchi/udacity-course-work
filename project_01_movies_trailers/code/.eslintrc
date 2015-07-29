@@ -6,7 +6,19 @@
   "plugins": [
   ],
   "rules": {
+    "camelcase": 2,
+    "complexity": [1, 6],
     "indent": [2, 2],
-    "quotes": [2, "single", "avoid-escape"]
+    "no-alert": 2,
+    "no-console": 2,
+    "no-eval": 2,
+    "quotes": [2, "single", "avoid-escape"],
+    "space-before-function-parentheses": [
+      1,
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ]
   }
 }
