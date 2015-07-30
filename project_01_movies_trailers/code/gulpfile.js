@@ -1,31 +1,75 @@
+'use strict';
+
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var path = require('path');
 var karma = require('karma');
 var karmaParseConfig = require('karma/lib/config').parseConfig;
+var webpack = require('webpack');
 
 function runKarma(configFilePath, options, cb) {
 
-	configFilePath = path.resolve(configFilePath);
+  configFilePath = path.resolve(configFilePath);
 
-	var server = karma.server;
-	var log=gutil.log, colors=gutil.colors;
-	var config = karmaParseConfig(configFilePath, {});
+  var server = karma.server;
+  var log = gutil.log;
+  var colors = gutil.colors;
+  var config = karmaParseConfig(configFilePath, {});
 
-  Object.keys(options).forEach(function(key) {
+  Object.keys(options).forEach(function (key) {
     config[key] = options[key];
   });
 
-	server.start(config, function(exitCode) {
-		log('Karma has exited with ' + colors.red(exitCode));
-		cb();
-		process.exit(exitCode);
-	});
+  server.start(config, function (exitCode) {
+    log('Karma has exited with ' + colors.red(exitCode));
+    cb();
+    // process.exit(exitCode);
+    throw new Error('');
+  });
 }
 
 /** actual tasks */
 
 /** single run */
-gulp.task('unit', function(cb) {
-	runKarma('test/karma.conf.js', {}, cb);
+gulp.task('unit', function (cb) {
+  runKarma('test/karma.conf.js', {}, cb);
+});
+
+gulp.task('webpack', function (cb) {
+  webpack({
+    entry: './src/app',
+    output: {
+      filename: 'app.js',
+      path: 'dist'
+    },
+    module: {
+      loaders: [
+        { test: /\.js$/, exclude: [/node_modules/], loader: 'babel' }
+      ]
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        bootstrap: 'bootstrap',
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        'root.jQuery': 'jquery'
+      })
+    ],
+    resolve: {
+      extensions: ['', '.js'],
+      alias: {
+        bootstrap: path.join(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.min'),
+        jquery: path.join(__dirname, 'node_modules/jquery/dist/jquery.min')
+      }
+    }
+  }, function (err, stats) {
+    if (err) {
+      throw new gutil.PluginError('webpack', err);
+    }
+    gutil.log('[webpack]', stats.toString({
+      // output options
+    }));
+    cb();
+  });
 });
