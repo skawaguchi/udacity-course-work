@@ -23,6 +23,7 @@ var FreshTomatoes = (function ($) {
       trailerYouTubeId
     );
 
+    // Append a fresh video player by clearing the existing one first
     $('#trailer-video-container')
       .empty()
       .append($('<iframe></iframe>', {
