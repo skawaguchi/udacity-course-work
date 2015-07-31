@@ -47,21 +47,8 @@ gulp.task('webpack', function (cb) {
         { test: /\.js$/, exclude: [/node_modules/], loader: 'babel' }
       ]
     },
-    plugins: [
-      new webpack.ProvidePlugin({
-        bootstrap: 'bootstrap',
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-        'root.jQuery': 'jquery'
-      })
-    ],
     resolve: {
-      extensions: ['', '.js'],
-      alias: {
-        bootstrap: path.join(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.min'),
-        jquery: path.join(__dirname, 'node_modules/jquery/dist/jquery.min')
-      }
+      extensions: ['', '.js']
     }
   }, function (err, stats) {
     if (err) {
