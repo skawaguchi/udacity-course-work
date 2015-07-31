@@ -99,6 +99,10 @@ h2.movie-title {
   margin-left: 10px;
 }
 
+.popover {
+    z-index: 1000; /* A value higher than 1010 that solves the problem */
+}
+
 @keyframes intro {
   from { opacity: 0; }
   to { opacity: 1; }

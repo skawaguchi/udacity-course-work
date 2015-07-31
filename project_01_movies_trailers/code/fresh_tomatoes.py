@@ -49,12 +49,16 @@ main_page_content = '''
     <!-- Movie Details -->
     <div id="movie-detail-container"></div>
 
+    <script src="src/polyfills.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
     <script>
       // Add the movies to JavaScript to allow us to create a more dynamic
       // user experience.
-      var movies = {movie_list}
+      window.movies = {movie_list};
     </script>
-    <script src="src/polyfills.js"></script>
+
     <script src="dist/app.js"></script>
   </body>
 </html>
@@ -63,23 +67,18 @@ main_page_content = '''
 # A single movie entry html template
 movie_tile_content = '''
 <li class="movie-tile col-md-4">
-    <a class="text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer" data-movie-id={movie_id}>
+    <a class="text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="popover" data-target="#trailer" data-movie-id="{movie_id}" title="{movie_title}" data-content="<span><strong>Year:</strong></span> {year}<br><span><strong>Starring:</strong></span> {actors}<br>{synopsis}" data-trigger="hover" data-html="true" data-placement="bottom">
         <img src="{poster_image_url}" width="220" height="342">
         <h2 class="movie-title">{movie_title}</h2>
     </a>
 </li>
 '''
 
-# A single actor template
-actor_tile_content = '''
-<li class="actor-tile text-center">{name}</li>
-'''
-
-def create_actor_tiles_content(actors):
-    content = ''
+def create_actor_list_content(actors):
+    actorList = []
     for actor in actors:
-        content += actor_tile_content.format(name=actor.get_name())
-    return content
+        actorList.append(actor.get_name())
+    return ', '.join(actorList)
 
 def create_movie_tiles_content(movies):
     # The HTML content for this section of the page
@@ -90,18 +89,15 @@ def create_movie_tiles_content(movies):
         youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
 
-        actor_tiles = create_actor_tiles_content(
-            actors=movie.actors
-        )
-
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_id=movie.id,
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id,
-            actor_tiles=actor_tiles,
-            year = movie.year
+            actors=create_actor_list_content(movie.actors),
+            year = movie.year,
+            synopsis = movie.synopsis
         )
 
     return content

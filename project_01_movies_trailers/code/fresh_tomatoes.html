@@ -36,42 +36,42 @@
     <ul class="movie-list">
       
 <li class="movie-tile col-md-4">
-    <a class="text-center" data-trailer-youtube-id="M5Y_nOkFvbY" data-toggle="modal" data-target="#trailer" data-movie-id=tt0816711>
+    <a class="text-center" data-trailer-youtube-id="M5Y_nOkFvbY" data-toggle="popover" data-target="#trailer" data-movie-id="tt0816711" title="World War Z" data-content="<span><strong>Year:</strong></span> 2013<br><span><strong>Starring:</strong></span> Brad Pitt<br>A epidemiologist struggles to find the cure for the zombie virus battling against time" data-trigger="hover" data-html="true" data-placement="bottom">
         <img src="https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster.jpg" width="220" height="342">
         <h2 class="movie-title">World War Z</h2>
     </a>
 </li>
 
 <li class="movie-tile col-md-4">
-    <a class="text-center" data-trailer-youtube-id="8m9EVP8X7N8" data-toggle="modal" data-target="#trailer" data-movie-id=tt127834>
+    <a class="text-center" data-trailer-youtube-id="8m9EVP8X7N8" data-toggle="popover" data-target="#trailer" data-movie-id="tt127834" title="Zombieland" data-content="<span><strong>Year:</strong></span> 2009<br><span><strong>Starring:</strong></span> Woody Harrelson, Jesse Eisenberg, Emma Stone<br>A zombie comedy about a band of zombie apocalypse survivors looking for a safe haven in the United States." data-trigger="hover" data-html="true" data-placement="bottom">
         <img src="https://upload.wikimedia.org/wikipedia/en/a/a3/Zombieland-poster.jpg" width="220" height="342">
         <h2 class="movie-title">Zombieland</h2>
     </a>
 </li>
 
 <li class="movie-tile col-md-4">
-    <a class="text-center" data-trailer-youtube-id="yfDUv3ZjH2k" data-toggle="modal" data-target="#trailer" data-movie-id=tt0365748>
+    <a class="text-center" data-trailer-youtube-id="yfDUv3ZjH2k" data-toggle="popover" data-target="#trailer" data-movie-id="tt0365748" title="Shaun of the Dead" data-content="<span><strong>Year:</strong></span> 2004<br><span><strong>Starring:</strong></span> Simon Pegg, Nick Frost<br>Friends fight their way through zombies in hilarious fashion." data-trigger="hover" data-html="true" data-placement="bottom">
         <img src="http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-Poster.jpg" width="220" height="342">
         <h2 class="movie-title">Shaun of the Dead</h2>
     </a>
 </li>
 
 <li class="movie-tile col-md-4">
-    <a class="text-center" data-trailer-youtube-id="c7ynwAgQlDQ" data-toggle="modal" data-target="#trailer" data-movie-id=tt0289043>
+    <a class="text-center" data-trailer-youtube-id="c7ynwAgQlDQ" data-toggle="popover" data-target="#trailer" data-movie-id="tt0289043" title="28 Days Later" data-content="<span><strong>Year:</strong></span> 2002<br><span><strong>Starring:</strong></span> Cillian Murphy<br>A coma patient awakens to discover that infected cannibals have taken over London, and maybe the world." data-trigger="hover" data-html="true" data-placement="bottom">
         <img src="http://www.movierulz.to/wp-content/uploads/2013/07/28-Days-Later.jpg" width="220" height="342">
         <h2 class="movie-title">28 Days Later</h2>
     </a>
 </li>
 
 <li class="movie-tile col-md-4">
-    <a class="text-center" data-trailer-youtube-id="rhsutNfvuAY" data-toggle="modal" data-target="#trailer" data-movie-id=tt0363547>
+    <a class="text-center" data-trailer-youtube-id="rhsutNfvuAY" data-toggle="popover" data-target="#trailer" data-movie-id="tt0363547" title="Dawn of the Dead" data-content="<span><strong>Year:</strong></span> 2004<br><span><strong>Starring:</strong></span> Sarah Polley, Ving Rhames<br>A group of survivors takes refuge in a mall." data-trigger="hover" data-html="true" data-placement="bottom">
         <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_movie.jpg" width="220" height="342">
         <h2 class="movie-title">Dawn of the Dead</h2>
     </a>
 </li>
 
 <li class="movie-tile col-md-4">
-    <a class="text-center" data-trailer-youtube-id="lEQwEmeWnyI" data-toggle="modal" data-target="#trailer" data-movie-id=tt127834>
+    <a class="text-center" data-trailer-youtube-id="lEQwEmeWnyI" data-toggle="popover" data-target="#trailer" data-movie-id="tt127834" title="Dead Snow" data-content="<span><strong>Year:</strong></span> 2009<br><span><strong>Starring:</strong></span> Vegar Hoel, Charlotte Frogner<br>A group of Norweigan friends combats Nazi zombies." data-trigger="hover" data-html="true" data-placement="bottom">
         <img src="https://upload.wikimedia.org/wikipedia/en/1/11/Dodsno.jpg" width="220" height="342">
         <h2 class="movie-title">Dead Snow</h2>
     </a>
@@ -82,12 +82,16 @@
     <!-- Movie Details -->
     <div id="movie-detail-container"></div>
 
+    <script src="src/polyfills.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
     <script>
       // Add the movies to JavaScript to allow us to create a more dynamic
       // user experience.
-      var movies = [{"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster.jpg", "title": "World War Z", "synopsis": "A epidemiologist struggles to find the cure for the zombie virus battling against time", "actors": [{"name": "Brad Pitt"}], "year": 2013, "screenshots": ["http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_xQoBm.jpg", "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_nxbku.jpg", "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_ftFQ8.jpg"], "id": "tt0816711", "trailer_youtube_url": "https://www.youtube.com/watch?v=M5Y_nOkFvbY"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/a/a3/Zombieland-poster.jpg", "title": "Zombieland", "synopsis": "A zombie comedy about a band of zombie apocalypse survivors looking for a safe haven in the United States.", "actors": [{"name": "Woody Harrelson"}, {"name": "Jesse Eisenberg"}, {"name": "Emma Stone"}], "year": 2009, "screenshots": ["http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_8DM5q.jpg", "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_y3DN7.jpg", "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_e2yFc.jpg"], "id": "tt127834", "trailer_youtube_url": "https://www.youtube.com/watch?v=8m9EVP8X7N8"}, {"poster_image_url": "http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-Poster.jpg", "title": "Shaun of the Dead", "synopsis": "Friends fight their way through zombies in hilarious fashion.", "actors": [{"name": "Simon Pegg"}, {"name": "Nick Frost"}], "year": 2004, "screenshots": ["http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_4WEgu.jpg", "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_dqt5z.jpg", "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_xWXLs.jpg"], "id": "tt0365748", "trailer_youtube_url": "https://www.youtube.com/watch?v=yfDUv3ZjH2k"}, {"poster_image_url": "http://www.movierulz.to/wp-content/uploads/2013/07/28-Days-Later.jpg", "title": "28 Days Later", "synopsis": "A coma patient awakens to discover that infected cannibals have taken over London, and maybe the world.", "actors": [{"name": "Cillian Murphy"}], "year": 2002, "screenshots": ["http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image29.jpg", "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image19.jpg", "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image21.jpg"], "id": "tt0289043", "trailer_youtube_url": "https://www.youtube.com/watch?v=c7ynwAgQlDQ"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_movie.jpg", "title": "Dawn of the Dead", "synopsis": "A group of survivors takes refuge in a mall.", "actors": [{"name": "Sarah Polley"}, {"name": "Ving Rhames"}], "year": 2004, "screenshots": ["http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_k7z1U.jpg", "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_Ab6WN.jpg", "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_SatYT.jpg"], "id": "tt0363547", "trailer_youtube_url": "https://www.youtube.com/watch?v=rhsutNfvuAY"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/1/11/Dodsno.jpg", "title": "Dead Snow", "synopsis": "A group of Norweigan friends combats Nazi zombies.", "actors": [{"name": "Vegar Hoel"}, {"name": "Charlotte Frogner"}], "year": 2009, "screenshots": ["http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_u8ucs.jpg", "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_ZznCV.jpg", "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_Fwqep.jpg"], "id": "tt127834", "trailer_youtube_url": "https://www.youtube.com/watch?v=lEQwEmeWnyI"}]
+      window.movies = [{"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster.jpg", "title": "World War Z", "synopsis": "A epidemiologist struggles to find the cure for the zombie virus battling against time", "actors": [{"name": "Brad Pitt"}], "year": 2013, "screenshots": ["http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_xQoBm.jpg", "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_nxbku.jpg", "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_ftFQ8.jpg"], "id": "tt0816711", "trailer_youtube_url": "https://www.youtube.com/watch?v=M5Y_nOkFvbY"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/a/a3/Zombieland-poster.jpg", "title": "Zombieland", "synopsis": "A zombie comedy about a band of zombie apocalypse survivors looking for a safe haven in the United States.", "actors": [{"name": "Woody Harrelson"}, {"name": "Jesse Eisenberg"}, {"name": "Emma Stone"}], "year": 2009, "screenshots": ["http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_8DM5q.jpg", "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_y3DN7.jpg", "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_e2yFc.jpg"], "id": "tt127834", "trailer_youtube_url": "https://www.youtube.com/watch?v=8m9EVP8X7N8"}, {"poster_image_url": "http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-Poster.jpg", "title": "Shaun of the Dead", "synopsis": "Friends fight their way through zombies in hilarious fashion.", "actors": [{"name": "Simon Pegg"}, {"name": "Nick Frost"}], "year": 2004, "screenshots": ["http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_4WEgu.jpg", "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_dqt5z.jpg", "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_image_xWXLs.jpg"], "id": "tt0365748", "trailer_youtube_url": "https://www.youtube.com/watch?v=yfDUv3ZjH2k"}, {"poster_image_url": "http://www.movierulz.to/wp-content/uploads/2013/07/28-Days-Later.jpg", "title": "28 Days Later", "synopsis": "A coma patient awakens to discover that infected cannibals have taken over London, and maybe the world.", "actors": [{"name": "Cillian Murphy"}], "year": 2002, "screenshots": ["http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image29.jpg", "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image19.jpg", "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_later_image21.jpg"], "id": "tt0289043", "trailer_youtube_url": "https://www.youtube.com/watch?v=c7ynwAgQlDQ"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_movie.jpg", "title": "Dawn of the Dead", "synopsis": "A group of survivors takes refuge in a mall.", "actors": [{"name": "Sarah Polley"}, {"name": "Ving Rhames"}], "year": 2004, "screenshots": ["http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_k7z1U.jpg", "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_Ab6WN.jpg", "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_image_SatYT.jpg"], "id": "tt0363547", "trailer_youtube_url": "https://www.youtube.com/watch?v=rhsutNfvuAY"}, {"poster_image_url": "https://upload.wikimedia.org/wikipedia/en/1/11/Dodsno.jpg", "title": "Dead Snow", "synopsis": "A group of Norweigan friends combats Nazi zombies.", "actors": [{"name": "Vegar Hoel"}, {"name": "Charlotte Frogner"}], "year": 2009, "screenshots": ["http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_u8ucs.jpg", "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_ZznCV.jpg", "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_Fwqep.jpg"], "id": "tt127834", "trailer_youtube_url": "https://www.youtube.com/watch?v=lEQwEmeWnyI"}];
     </script>
-    <script src="src/polyfills.js"></script>
+
     <script src="dist/app.js"></script>
   </body>
 </html>
