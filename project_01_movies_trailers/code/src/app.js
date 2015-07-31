@@ -1,3 +1,4 @@
 import freshTomatoes from './FreshTomatoes';
 
-freshTomatoes(window.movies);
+// Kick off the application
+freshTomatoes();
