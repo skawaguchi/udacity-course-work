@@ -10,11 +10,6 @@
     "gulp-jasmine": "^2.0.1",
     "jasmine": "^2.3.1",
     "jasmine-reporters": "^2.0.7",
-    "karma": "^0.13.2",
-    "karma-coverage": "^0.4.2",
-    "karma-jasmine": "^0.3.6",
-    "karma-phantomjs2-launcher": "^0.1.6",
-    "karma-spec-reporter": "0.0.20",
     "webpack": "^1.10.5"
   },
   "license": "MIT",
