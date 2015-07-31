@@ -21,6 +21,6 @@
     "url": "https://github.com/skawaguchi/udacity-course-work.git"
   },
   "scripts": {
-    "test": "gulp unit"
+    "start": "gulp webpack"
   }
 }
