@@ -52,13 +52,6 @@ main_page_content = '''
     <script src="src/polyfills.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-    <script>
-      // Add the movies to JavaScript to allow us to create a more dynamic
-      // user experience.
-      window.movies = {movie_list};
-    </script>
-
     <script src="dist/app.js"></script>
   </body>
 </html>
@@ -74,6 +67,7 @@ movie_tile_content = '''
 </li>
 '''
 
+# Transform the Actor list to a comma-separated string for display
 def create_actor_list_content(actors):
     actorList = []
     for actor in actors:
