@@ -16,6 +16,7 @@
     "no-alert": 2,
     "no-console": 2,
     "no-eval": 2,
+    "no-shadow": [0],
     "quotes": [2, "single", "avoid-escape"],
     "space-before-function-parentheses": [
       1,
@@ -23,6 +24,7 @@
         "anonymous": "always",
         "named": "never"
       }
-    ]
+    ],
+    "no-use-before-define": [2, "nofunc"]
   }
 }
