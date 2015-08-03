@@ -7,135 +7,102 @@ import fresh_tomatoes
 def populate_movies():
     """Populates a list of movies."""
 
-    world_war_z = media.Movie(
-        "tt0816711",
-        "World War Z",
-        "A epidemiologist struggles to find the cure for the zombie virus "
-        "battling against time",
-        "https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster.jpg",
-        "https://www.youtube.com/watch?v=M5Y_nOkFvbY",
-        [
+    world_war_z = media.Movie({
+        "film_id": "tt0816711",
+        "film_title": "World War Z",
+        "film_synopsis":
+            "A epidemiologist struggles to find the cure for the zombie virus "
+            "battling against time",
+        "film_poster_url":
+            "https://upload.wikimedia.org/wikipedia/en/d/dc/World_War_Z_poster"
+            ".jpg",
+        "film_trailer_url": "https://www.youtube.com/watch?v=M5Y_nOkFvbY",
+        "film_actors": [
             actor.Actor("Brad", "Pitt")
         ],
-        [
-            "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_"
-            "xQoBm.jpg",
-            "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_"
-            "nxbku.jpg",
-            "http://i.neoseeker.com/screenshots/MjYzLzUv/world_war_z_image_"
-            "ftFQ8.jpg"
-        ],
-        2013
-    )
+        "film_year": 2013
+    })
 
-    zombieland = media.Movie(
-        "tt127834",
-        "Zombieland",
-        "A zombie comedy about a band of zombie apocalypse survivors looking for a "
-        "safe haven in the United States.",
-        "https://upload.wikimedia.org/wikipedia/en/a/a3/Zombieland-poster.jpg",
-        "https://www.youtube.com/watch?v=8m9EVP8X7N8",
-        [
+    zombieland = media.Movie({
+        "film_id": "tt127834",
+        "film_title": "Zombieland",
+        "film_synopsis":
+            "A zombie comedy about a band of zombie apocalypse survivors "
+            "looking for a safe haven in the United States.",
+        "film_poster_url":
+            "https://upload.wikimedia.org/wikipedia/en/a/a3/"
+            "Zombieland-poster.jpg",
+        "film_trailer_url": "https://www.youtube.com/watch?v=8m9EVP8X7N8",
+        "film_actors": [
             actor.Actor("Woody", "Harrelson"),
             actor.Actor("Jesse", "Eisenberg"),
             actor.Actor("Emma", "Stone")
         ],
-        [
-            "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_"
-            "8DM5q.jpg",
-            "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_"
-            "y3DN7.jpg",
-            "http://i.neoseeker.com/screenshots/MjUwLzAv/zombieland_image_"
-            "e2yFc.jpg"
-        ],
-        2009
-    )
+        "film_year": 2009
+    })
 
-    shaun_of_the_dead = media.Movie(
-        "tt0365748",
-        "Shaun of the Dead",
-        "Friends fight their way through zombies in hilarious fashion.",
-        "http://landmarktheatre.org/wp-content/uploads/2014/10/Shaun-of-the-Dead-"
-        "Poster.jpg",
-        "https://www.youtube.com/watch?v=yfDUv3ZjH2k",
-        [
+    shaun_of_the_dead = media.Movie({
+        "film_id": "tt0365748",
+        "film_title": "Shaun of the Dead",
+        "film_synopsis":
+            "Friends fight their way through zombies in hilarious fashion.",
+        "film_poster_url":
+            "http://landmarktheatre.org/wp-content/uploads/"
+            "2014/10/Shaun-of-the-Dead-Poster.jpg",
+        "film_trailer_url": "https://www.youtube.com/watch?v=yfDUv3ZjH2k",
+        "film_actors": [
             actor.Actor("Simon", "Pegg"),
             actor.Actor("Nick", "Frost")
         ],
-        [
-            "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_"
-            "image_4WEgu.jpg",
-            "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_"
-            "image_dqt5z.jpg",
-            "http://i.neoseeker.com/screenshots/MzU1LzMv/shaun_of_the_dead_"
-            "image_xWXLs.jpg"
-        ],
-        2004
-    )
+        "film_year": 2004
+    })
 
-    twenty_eight_days_later = media.Movie(
-        "tt0289043",
-        "28 Days Later",
-        "A coma patient awakens to discover that infected cannibals have taken over"
-        " London, and maybe the world.",
-        "http://www.movierulz.to/wp-content/uploads/2013/07/28-Days-Later.jpg",
-        "https://www.youtube.com/watch?v=c7ynwAgQlDQ",
-        [
+    twenty_eight_days_later = media.Movie({
+        "film_id": "tt0289043",
+        "film_title": "28 Days Later",
+        "film_synopsis":
+            "A coma patient awakens to discover that infected "
+            "cannibals have taken over London, and maybe the world.",
+        "film_poster_url":
+            "http://www.movierulz.to/wp-content/uploads/2013/"
+            "07/28-Days-Later.jpg",
+        "film_trailer_url": "https://www.youtube.com/watch?v=c7ynwAgQlDQ",
+        "film_actors": [
             actor.Actor("Cillian", "Murphy")
         ],
-        [
-            "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_"
-            "later_image29.jpg",
-            "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_"
-            "later_image19.jpg",
-            "http://i.neoseeker.com/screenshots/TW92aWVzL0hvcnJvcg==/28_days_"
-            "later_image21.jpg"
-        ],
-        2002
-    )
+        "film_year": 2002
+    })
 
-    dawn_of_the_dead_remake = media.Movie(
-        "tt0363547",
-        "Dawn of the Dead",
-        "A group of survivors takes refuge in a mall.",
-        "https://upload.wikimedia.org/wikipedia/en/1/16/Dawn_of_the_Dead_2004_"
-        "movie.jpg",
-        "https://www.youtube.com/watch?v=rhsutNfvuAY",
-        [
+    dawn_of_the_dead_remake = media.Movie({
+        "film_id": "tt0363547",
+        "film_title": "Dawn of the Dead",
+        "film_synopsis":
+            "A group of survivors takes refuge in a mall.",
+        "film_poster_url":
+            "https://upload.wikimedia.org/wikipedia/en/1/16/"
+            "Dawn_of_the_Dead_2004_movie.jpg",
+        "film_trailer_url": "https://www.youtube.com/watch?v=rhsutNfvuAY",
+        "film_actors": [
             actor.Actor("Sarah", "Polley"),
             actor.Actor("Ving", "Rhames")
         ],
-        [
-            "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_"
-            "image_k7z1U.jpg",
-            "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_"
-            "image_Ab6WN.jpg",
-            "http://i.neoseeker.com/screenshots/NTQwLzIv/dawn_of_the_dead_2004_"
-            "image_SatYT.jpg"
-        ],
-        2004
-    )
+        "film_year": 2004
+    })
 
-    dead_snow = media.Movie(
-        "tt127834",
-        "Dead Snow",
-        "A group of Norweigan friends combats Nazi zombies.",
-        "https://upload.wikimedia.org/wikipedia/en/1/11/Dodsno.jpg",
-        "https://www.youtube.com/watch?v=lEQwEmeWnyI",
-        [
+    dead_snow = media.Movie({
+        "film_id": "tt127834",
+        "film_title": "Dead Snow",
+        "film_synopsis": "A group of Norweigan friends combats Nazi zombies.",
+        "film_poster_url":
+            "https://upload.wikimedia.org/wikipedia/en/1/11/"
+            "Dodsno.jpg",
+        "film_trailer_url": "https://www.youtube.com/watch?v=lEQwEmeWnyI",
+        "film_actors": [
             actor.Actor("Vegar", "Hoel"),
             actor.Actor("Charlotte", "Frogner")
         ],
-        [
-            "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_"
-            "u8ucs.jpg",
-            "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_"
-            "ZznCV.jpg",
-            "http://i.neoseeker.com/screenshots/OTMwLzMv/dead_snow_image_"
-            "Fwqep.jpg"
-        ],
-        2009
-    )
+        "film_year": 2009
+    })
 
     # Return the list of the movies to be rendered on the webpage
     return [
